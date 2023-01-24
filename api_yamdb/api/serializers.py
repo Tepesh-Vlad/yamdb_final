@@ -6,7 +6,8 @@ from rest_framework import serializers
 from rest_framework.relations import SlugRelatedField
 from rest_framework.validators import UniqueValidator, ValidationError
 
-from api_yamdb.reviews.models import Category, Comment, Genre, Review, Title, User
+from api_yamdb.reviews.models import (Category, Comment, Genre, Review, Title,
+                                      User)
 
 
 def validate_username(value):

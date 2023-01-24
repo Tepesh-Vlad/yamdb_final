@@ -38,10 +38,12 @@ jobs:
          
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v1
-          
-      - name: Login to Docker
+
+      - name: Logout to Docker
         run: |
-          $ docker logout
+          docker logout
+
+      - name: Login to Docker
         uses: docker/login-action@v1
         with:
           username: 'shirocov.vladislav2015@yandex.ru'

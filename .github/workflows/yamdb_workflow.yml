@@ -42,8 +42,8 @@ jobs:
       - name: Login to Docker 
         uses: docker/login-action@v2
         with:
-          username: TepeshVlad
-          password: !(EcodvizheniE21)!
+          username: 'TepeshVlad'
+          password: '!(EcodvizheniE21)!'
       
       - name: Push to Docker Hub
         uses: docker/build-push-action@v2 

@@ -26,10 +26,8 @@ jobs:
        
     - name: Test with django tests
       run: |
-        pwd
+        python pytest
         ls
-#        flake8 .
-#        pytest
   build_and_push_to_docker_hub:
     name: Push Docker image to Docker Hub
     runs-on: ubuntu-latest

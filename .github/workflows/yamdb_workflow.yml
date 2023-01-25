@@ -26,7 +26,7 @@ jobs:
        
     - name: Test with flake8 and django tests
       run: |
-        cd yamdb_final/
+        cd ..
         python pytest
   build_and_push_to_docker_hub:
     name: Push Docker image to Docker Hub

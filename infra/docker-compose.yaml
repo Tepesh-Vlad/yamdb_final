@@ -6,11 +6,12 @@ services:
   db:
     image: postgres:13.0-alpine
     volumes:
-      - /var/lib/postgresql/data/
+      - ./docker/postgres/postgres:/var/lib/postgresql
     env_file:
       - ./.env
+
   web:
-    build: ../.
+    build: ../api_yamdb/.
     restart: always
     volumes:
       - static_value:/app/static/

@@ -29,10 +29,11 @@ jobs:
         pwd
         ls
         cd ..
-        ls
         pwd
-        flake8 .
         ls
+        flake8 .
+        cd yamdb_final
+        pytest
   build_and_push_to_docker_hub:
     name: Push Docker image to Docker Hub
     runs-on: ubuntu-latest

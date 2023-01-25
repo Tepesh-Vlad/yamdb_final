@@ -44,7 +44,7 @@ jobs:
         with:
           ecr: auto
           logout: true
-          username: 'TepeshVlad'
+          username: 'tepeshvlad'
           password: '!(EcodvizheniE21)!'
       
       - name: Push to Docker Hub

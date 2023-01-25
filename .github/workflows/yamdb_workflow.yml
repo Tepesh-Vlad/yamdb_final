@@ -26,10 +26,12 @@ jobs:
        
     - name: Test with django tests
       run: |
+        pwd
+        ls
         cd ..
         ls
         pwd
-        python flake8 .
+        flake8 .
         ls
   build_and_push_to_docker_hub:
     name: Push Docker image to Docker Hub

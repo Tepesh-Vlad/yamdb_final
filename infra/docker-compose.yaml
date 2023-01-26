@@ -12,7 +12,7 @@ services:
 
 
   web:
-    build: ../api_yamdb/.
+    image: tepeshvlad/api_yamdb_web:latest
     restart: always
     volumes:
       - static_value:/app/static/

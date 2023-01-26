@@ -12,6 +12,7 @@ services:
 
 
   web:
+#    хотел вместо username вставить переменную из окружения, но тогда тесты не проходят
     image: tepeshvlad/api_yamdb_web:latest
     restart: always
     volumes:

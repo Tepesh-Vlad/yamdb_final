@@ -32,6 +32,7 @@ jobs:
     name: Push Docker image to Docker Hub
     runs-on: ubuntu-latest
     needs: tests
+    if: github.ref == 'refs/heads/master'
     steps:
       - name: Check out the repo
         uses: actions/checkout@v2
@@ -50,6 +51,7 @@ jobs:
       - name: Push to Docker Hub
         uses: docker/build-push-action@v2 
         with:
+          file: api_yamdb/Dockerfile
           push: true
           tags: tepeshvlad/api_yamdb_web:latest
   
@@ -65,15 +67,24 @@ jobs:
         username: ${{ secrets.USER }}
         key: ${{ secrets.SSH_KEY }}
         script: |
-
-          sudo docker pull ${{ secrets.DOCKER_LOGIN }}/${{ secrets.DOCKER_REP }}
-          sudo docker stop $(sudo docker ps -a -q)
-          sudo docker run --rm -d -p 5000:5000 ${{ secrets.DOCKER_LOGIN }}/${{ secrets.DOCKER_REP }}
+          sudo docker-compose pull ${{ secrets.DOCKER_LOGIN }}/${{ secrets.DOCKER_REP }}
+          sudo docker-compose stop $(sudo docker ps -a -q)
+          sudo docker-compose rm -f web
+          rm .env
+          touch .env
+          echo SECRET_KEY=${{ secrets.SECRET_KEY }} >> .env
+          echo DB_ENGINE=${{ secrets.DB_ENGINE }} >> .env
+          echo DB_NAME=${{ secrets.DB_NAME }} >> .env
+          echo POSTGRES_USER=${{ secrets.POSTGRES_USER }} >> .env
+          echo POSTGRES_PASSWORD=${{ secrets.POSTGRES_PASSWORD }} >> .env
+          echo DB_HOST=${{ secrets.DB_HOST }} >> .env
+          echo DB_PORT=${{ secrets.DB_PORT }} >> .env
+          sudo docker-compose up -d --build
 
 
   send_message:
     runs-on: ubuntu-latest
-    needs: build_and_push_to_docker_hub
+    needs: deploy
     steps:
     - name: send message
       uses: appleboy/telegram-action@master

@@ -64,15 +64,14 @@ jobs:
       uses: appleboy/ssh-action@master
       with:
         host: ${{ secrets.HOST }}
-        username: ${{ secrets.USER }}
-        key: ${{ secrets.SSH_KEY }}
+        username: ${{ secrets.USER_DESK }}
+        key: ${{ secrets.SSH_KEY_DESK }}
         script: |
-          sudo docker-compose pull ${{ secrets.DOCKER_LOGIN }}/${{ secrets.DOCKER_REP }}
+          sudo docker-compose pull tepeshvlad/api_yamdb_web
           sudo docker-compose stop $(sudo docker ps -a -q)
           sudo docker-compose rm -f web
           rm .env
           touch .env
-          echo SECRET_KEY=${{ secrets.SECRET_KEY }} >> .env
           echo DB_ENGINE=${{ secrets.DB_ENGINE }} >> .env
           echo DB_NAME=${{ secrets.DB_NAME }} >> .env
           echo POSTGRES_USER=${{ secrets.POSTGRES_USER }} >> .env

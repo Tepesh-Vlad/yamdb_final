@@ -73,7 +73,7 @@ jobs:
           sudo docker-compose pull tepeshvlad/api_yamdb_web
           sudo docker-compose stop $(sudo docker ps -a -q)
           sudo docker-compose rm -f web
-          rm .env
+          rm -f .env
           touch .env
           echo DB_ENGINE=${{ secrets.DB_ENGINE }} >> .env
           echo DB_NAME=${{ secrets.DB_NAME }} >> .env

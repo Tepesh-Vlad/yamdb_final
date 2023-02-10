@@ -65,9 +65,6 @@ jobs:
       with:
         host: ${{ secrets.HOST }}
         username: ${{ secrets.USER_DESK }}
-#        username: ${{ secrets.USER_LAPTOP }}
-#        key: ${{ secrets.SSH_KEY_DESK }}
-#        key: ${{ secrets.SSH_KEY_LAPTOP }}
         key: ${{ secrets.SSH_KEY }}
         script: |
           sudo docker-compose pull tepeshvlad/api_yamdb_web

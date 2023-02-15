@@ -81,5 +81,9 @@ url = 'http://127.0.0.1:8000/api/v1/titles/{title_id}/reviews/{review_id}/commen
 - Владислав Широков
 - Елизавета Огай
 
-Ссылка на пример: https://51.250.90.17/api/v1/titles
+Ссылка на пример: http://51.250.90.17/api/v1/titles/
+
+не открывалось из-за https с http все норм должно быть
+
+можно еще открыть redoc http://51.250.90.17/redoc/
 
